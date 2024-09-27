@@ -27,7 +27,7 @@
 
 #include "pager-buttons.h"
 
-
+#if 0
 
 static void pager_buttons_get_property               (GObject       *object,
                                                       guint          prop_id,
@@ -99,7 +99,9 @@ enum
 
 XFCE_PANEL_DEFINE_TYPE (PagerButtons, pager_buttons, GTK_TYPE_GRID)
 
+#endif
 
+#if 0
 
 static void
 pager_buttons_class_init (PagerButtonsClass *klass)
@@ -641,9 +643,10 @@ pager_buttons_viewport_button_toggled (GtkWidget    *button,
                              vp_info[VIEWPORT_X],
                              vp_info[VIEWPORT_Y]);
 }
+#endif
 
 
-
+#if 0 // removed from header
 GtkWidget *
 pager_buttons_new (WnckScreen *screen)
 {
@@ -651,7 +654,9 @@ pager_buttons_new (WnckScreen *screen)
 
   return g_object_new (XFCE_TYPE_PAGER_BUTTONS,
                        "screen", screen, NULL);
+  return NULL;
 }
+#endif
 
 
 
@@ -659,6 +664,7 @@ void
 pager_buttons_set_orientation (PagerButtons   *pager,
                                GtkOrientation  orientation)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_PAGER_BUTTONS (pager));
 
   if (pager->orientation == orientation)
@@ -666,6 +672,7 @@ pager_buttons_set_orientation (PagerButtons   *pager,
 
   pager->orientation = orientation;
   pager_buttons_queue_rebuild (pager);
+#endif
 }
 
 
@@ -674,6 +681,7 @@ void
 pager_buttons_set_n_rows (PagerButtons *pager,
                           gint          rows)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_PAGER_BUTTONS (pager));
 
   if (pager->rows == rows)
@@ -681,6 +689,7 @@ pager_buttons_set_n_rows (PagerButtons *pager,
 
   pager->rows = rows;
   pager_buttons_queue_rebuild (pager);
+#endif
 }
 
 
@@ -689,6 +698,7 @@ void
 pager_buttons_set_numbering (PagerButtons *pager,
                              gboolean      numbering)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_PAGER_BUTTONS (pager));
 
   if (pager->numbering == numbering)
@@ -696,4 +706,5 @@ pager_buttons_set_numbering (PagerButtons *pager,
 
   pager->numbering = numbering;
   pager_buttons_queue_rebuild (pager);
+#endif
 }

@@ -23,7 +23,7 @@
 #include <exo/exo.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4panel/libxfce4panel.h>
-#include <libwnck/libwnck.h>
+//#include <libwnck/libwnck.h>
 #include <common/panel-xfconf.h>
 #include <common/panel-utils.h>
 #include <gdk/gdkkeysyms.h>
@@ -38,7 +38,7 @@
 #define DEFAULT_ELLIPSIZE_MODE  (PANGO_ELLIPSIZE_MIDDLE)
 #define URGENT_FLAGS            (WNCK_WINDOW_STATE_DEMANDS_ATTENTION | \
                                  WNCK_WINDOW_STATE_URGENT)
-
+#if 0
 struct _WindowMenuPluginClass
 {
   XfcePanelPluginClass __parent__;
@@ -1407,3 +1407,4 @@ window_menu_plugin_menu (GtkWidget        *button,
                             GDK_GRAVITY_NORTH_WEST,
                             NULL);
 }
+#endif

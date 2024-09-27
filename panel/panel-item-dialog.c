@@ -328,7 +328,9 @@ panel_item_dialog_response (GtkDialog *gtk_dialog,
 
   panel_return_if_fail (PANEL_IS_ITEM_DIALOG (dialog));
   panel_return_if_fail (GTK_IS_TREE_VIEW (dialog->treeview));
-  panel_return_if_fail (PANEL_IS_APPLICATION (dialog->application));
+  //panel_return_if_fail (PANEL_IS_APPLICATION (dialog->application));
+  g_warning("TODO: panel_item_dialog_response ()");
+  g_warning("TODO: panel_return_if_fail (PANEL_IS_APPLICATION (dialog->application));");
 
   if (response_id == GTK_RESPONSE_HELP)
     {
@@ -813,7 +815,9 @@ panel_item_dialog_show (PanelWindow *window)
   GdkScreen        *screen;
   PanelApplication *application;
 
-  panel_return_if_fail (window == NULL || PANEL_IS_WINDOW (window));
+  //panel_return_if_fail (window == NULL || PANEL_IS_WINDOW (window));
+  g_warning("TODO: panel_item_dialog_show (PanelWindow *window)");
+  g_warning("TODO: panel_return_if_fail (window == NULL || PANEL_IS_WINDOW (window));");
 
   /* check if not the entire application is locked */
   if (panel_dialogs_kiosk_warning ())

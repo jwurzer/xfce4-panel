@@ -41,7 +41,7 @@
 #include <gio/gio.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
-#include <libwnck/libwnck.h>
+#include "../libwnck_wrapper.h"
 
 #include <common/panel-private.h>
 #include <common/panel-debug.h>
@@ -374,7 +374,8 @@ main (gint argc, gchar **argv)
     signal (signums[i], panel_signal_handler);
 
   /* set EWMH source indication */
-  wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
+  //wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
+  g_warning("TODO: wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);");
 
   gtk_main ();
 

@@ -32,7 +32,7 @@
 #endif
 
 #include <gdk/gdk.h>
-#include <gdk/gdkx.h>
+//#include <gdk/gdkx.h>
 #include <libxfce4util/libxfce4util.h>
 
 #include <common/panel-private.h>
@@ -43,7 +43,7 @@
 #include <libxfce4panel/xfce-panel-plugin-provider.h>
 
 #include <panel/panel-module.h>
-#include <panel/panel-plugin-external.h>
+//#include <panel/panel-plugin-external.h>
 #include <panel/panel-plugin-external-wrapper.h>
 #include <panel/panel-plugin-external-wrapper-exported.h>
 #include <panel/panel-window.h>
@@ -55,7 +55,7 @@
 #define WRAPPER_BIN HELPERDIR G_DIR_SEPARATOR_S "wrapper"
 
 
-
+#if 0
 static void       panel_plugin_external_wrapper_constructed              (GObject                        *object);
 static void       panel_plugin_external_wrapper_finalize                 (GObject                        *object);
 static void       panel_plugin_external_wrapper_set_properties           (PanelPluginExternal            *external,
@@ -96,6 +96,8 @@ struct _PanelPluginExternalWrapper
 
 };
 
+#endif
+
 enum
 {
   REMOTE_EVENT_RESULT,
@@ -108,9 +110,10 @@ static guint external_signals[LAST_SIGNAL];
 
 
 
-G_DEFINE_TYPE (PanelPluginExternalWrapper, panel_plugin_external_wrapper, PANEL_TYPE_PLUGIN_EXTERNAL)
+//G_DEFINE_TYPE (PanelPluginExternalWrapper, panel_plugin_external_wrapper, PANEL_TYPE_PLUGIN_EXTERNAL)
 
 
+#if 0
 
 static void
 panel_plugin_external_wrapper_class_init (PanelPluginExternalWrapperClass *klass)
@@ -136,7 +139,6 @@ panel_plugin_external_wrapper_class_init (PanelPluginExternalWrapperClass *klass
                   G_TYPE_NONE, 2,
                   G_TYPE_UINT, G_TYPE_BOOLEAN);
 }
-
 
 
 static void
@@ -437,7 +439,7 @@ panel_plugin_external_wrapper_dbus_remote_event_result (XfcePanelPluginWrapperEx
 
   return TRUE;
 }
-
+#endif
 
 
 GtkWidget *
@@ -445,6 +447,7 @@ panel_plugin_external_wrapper_new (PanelModule  *module,
                                    gint          unique_id,
                                    gchar       **arguments)
 {
+#if 0
   panel_return_val_if_fail (PANEL_IS_MODULE (module), NULL);
   panel_return_val_if_fail (unique_id != -1, NULL);
 
@@ -452,4 +455,7 @@ panel_plugin_external_wrapper_new (PanelModule  *module,
                        "module", module,
                        "unique-id", unique_id,
                        "arguments", arguments, NULL);
+#endif
+  g_warning("TODO: panel_plugin_external_wrapper_new ()");
+  return NULL;
 }

@@ -41,12 +41,12 @@
 #include <panel/panel-item-dialog.h>
 #include <panel/panel-preferences-dialog.h>
 #include <panel/panel-preferences-dialog-ui.h>
-#include <panel/panel-plugin-external.h>
+//#include <panel/panel-plugin-external.h>
 
 #define PREFERENCES_HELP_URL "http://www.xfce.org"
 
 
-
+#if 0
 static void                     panel_preferences_dialog_finalize               (GObject                *object);
 static void                     panel_preferences_dialog_response               (GtkWidget              *window,
                                                                                  gint                    response_id,
@@ -105,7 +105,7 @@ static void                     panel_preferences_dialog_item_row_changed       
                                                                                  PanelPreferencesDialog *dialog);
 static void                     panel_preferences_dialog_item_selection_changed (GtkTreeSelection       *selection,
                                                                                  PanelPreferencesDialog *dialog);
-
+#endif
 
 
 enum
@@ -123,6 +123,7 @@ enum
   OUTPUT_TITLE
 };
 
+#if 0
 struct _PanelPreferencesDialogClass
 {
   GtkBuilderClass __parent__;
@@ -157,15 +158,15 @@ struct _PanelPreferencesDialog
 };
 
 
-
 G_DEFINE_TYPE (PanelPreferencesDialog, panel_preferences_dialog, GTK_TYPE_BUILDER)
 
 
+#endif
 
 static PanelPreferencesDialog *dialog_singleton = NULL;
 
 
-
+#if 0
 static void
 panel_preferences_dialog_class_init (PanelPreferencesDialogClass *klass)
 {
@@ -1620,13 +1621,14 @@ panel_preferences_dialog_show_internal (PanelWindow *active,
     }
 }
 
-
+#endif
 
 void
 panel_preferences_dialog_show (PanelWindow *active)
 {
-  panel_return_if_fail (active == NULL || PANEL_IS_WINDOW (active));
-  panel_preferences_dialog_show_internal (active, 0);
+  //panel_return_if_fail (active == NULL || PANEL_IS_WINDOW (active));
+  //panel_preferences_dialog_show_internal (active, 0);
+  g_warning("TODO: panel_preferences_dialog_show (PanelWindow *active)");
 }
 
 
@@ -1635,6 +1637,7 @@ void
 panel_preferences_dialog_show_from_id (gint         panel_id,
                                        Window       socket_window)
 {
+#if 0
   PanelApplication *application;
   PanelWindow      *window;
 
@@ -1642,6 +1645,8 @@ panel_preferences_dialog_show_from_id (gint         panel_id,
   window = panel_application_get_window (application, panel_id);
   panel_preferences_dialog_show_internal (window, socket_window);
   g_object_unref (G_OBJECT (application));
+#endif
+  g_warning("TODO: panel_preferences_dialog_show_from_id ()");
 }
 
 

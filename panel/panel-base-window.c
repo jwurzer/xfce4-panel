@@ -32,7 +32,7 @@
 #include <common/panel-debug.h>
 #include <panel/panel-base-window.h>
 #include <panel/panel-window.h>
-#include <panel/panel-plugin-external.h>
+//#include <panel/panel-plugin-external.h>
 
 
 
@@ -43,6 +43,11 @@
 #define MARCHING_ANTS_DASHED  "marching-ants-dashed"
 #define MARCHING_ANTS_DOTTED  "marching-ants-dotted"
 
+static gboolean PANEL_IS_PLUGIN_EXTERNAL(void* obj)
+{
+	g_warning("TODO: PANEL_IS_PLUGIN_EXTERNAL(obj) macro");
+	return FALSE;
+}
 
 static void     panel_base_window_get_property                (GObject              *object,
                                                                guint                 prop_id,
@@ -763,8 +768,9 @@ panel_base_window_set_plugin_opacity (GtkWidget *widget,
   panel_return_if_fail (XFCE_IS_PANEL_PLUGIN_PROVIDER (widget));
   panel_return_if_fail (PANEL_IS_BASE_WINDOW (user_data));
 
-  if (PANEL_IS_PLUGIN_EXTERNAL (widget))
-    panel_plugin_external_set_opacity (PANEL_PLUGIN_EXTERNAL (widget), opacity);
+  //if (PANEL_IS_PLUGIN_EXTERNAL (widget))
+  //  panel_plugin_external_set_opacity (PANEL_PLUGIN_EXTERNAL (widget), opacity);
+  g_warning("TODO: panel_base_window_set_plugin_opacity ()");
 }
 
 
@@ -781,8 +787,9 @@ panel_base_window_set_plugin_background_color (GtkWidget *widget,
 
   /* send null if the style is not a bg color */
   color = window->background_style == PANEL_BG_STYLE_COLOR ? window->background_rgba : NULL;
-  if (PANEL_IS_PLUGIN_EXTERNAL (widget))
-    panel_plugin_external_set_background_color (PANEL_PLUGIN_EXTERNAL (widget), color);
+  //if (PANEL_IS_PLUGIN_EXTERNAL (widget))
+  //  panel_plugin_external_set_background_color (PANEL_PLUGIN_EXTERNAL (widget), color);
+  g_warning("TODO: panel_base_window_set_plugin_background_color ()");
 }
 
 
@@ -794,9 +801,10 @@ panel_base_window_set_plugin_background_image (GtkWidget *widget,
   panel_return_if_fail (XFCE_IS_PANEL_PLUGIN_PROVIDER (widget));
   panel_return_if_fail (PANEL_IS_BASE_WINDOW (user_data));
 
-  if (PANEL_IS_PLUGIN_EXTERNAL (widget))
-    panel_plugin_external_set_background_image (PANEL_PLUGIN_EXTERNAL (widget),
-        PANEL_BASE_WINDOW (user_data)->background_image);
+  //if (PANEL_IS_PLUGIN_EXTERNAL (widget))
+  //  panel_plugin_external_set_background_image (PANEL_PLUGIN_EXTERNAL (widget),
+  //      PANEL_BASE_WINDOW (user_data)->background_image);
+  g_warning("TODO: panel_base_window_set_plugin_background_image ()");
 }
 
 

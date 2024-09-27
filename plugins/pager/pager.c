@@ -33,7 +33,7 @@
 #include <common/panel-utils.h>
 #include <common/panel-private.h>
 #include <common/panel-debug.h>
-#include <libwnck/libwnck.h>
+//#include <libwnck/libwnck.h>
 
 #include "pager.h"
 #include "pager-buttons.h"
@@ -44,6 +44,7 @@
 #define WORKSPACE_SETTINGS_COMMAND "xfwm4-workspace-settings"
 
 
+#if 0
 
 static void     pager_plugin_get_property                 (GObject           *object,
                                                            guint              prop_id,
@@ -133,7 +134,9 @@ enum
 XFCE_PANEL_DEFINE_PLUGIN_RESIDENT (PagerPlugin, pager_plugin,
     pager_buttons_register_type)
 
+#endif
 
+#if 0
 
 static void
 pager_plugin_class_init (PagerPluginClass *klass)
@@ -836,3 +839,4 @@ pager_plugin_get_preferred_height_for_width (GtkWidget *widget,
 {
   pager_plugin_get_preferred_height (widget, minimum_height, natural_height);
 }
+#endif

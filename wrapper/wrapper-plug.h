@@ -40,7 +40,7 @@ extern gchar *wrapper_name;
 
 GType         wrapper_plug_get_type             (void) G_GNUC_CONST;
 
-WrapperPlug  *wrapper_plug_new                  (Window           socket_id);
+//WrapperPlug  *wrapper_plug_new                  (Window           socket_id);
 
 void          wrapper_plug_set_opacity          (WrapperPlug     *plug,
                                                  gdouble          opacity);

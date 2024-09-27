@@ -32,7 +32,7 @@
 #define DRAG_ACTIVATE_TIMEOUT (500)
 
 
-
+#if 0
 static void     show_desktop_plugin_screen_changed          (GtkWidget              *widget,
                                                              GdkScreen              *previous_screen);
 static void     show_desktop_plugin_construct               (XfcePanelPlugin        *panel_plugin);
@@ -352,3 +352,4 @@ show_desktop_plugin_drag_motion (GtkWidget         *widget,
 
   return TRUE;
 }
+#endif

@@ -1,3 +1,5 @@
+#if 0
+
 /*
  * Copyright (C) 2008-2010 Nick Schermer <nick@xfce.org>
  *
@@ -31,7 +33,7 @@
 #endif
 
 #include <gdk/gdk.h>
-#include <gdk/gdkx.h>
+//#include <gdk/gdkx.h>
 #include <libxfce4util/libxfce4util.h>
 
 #include <gio/gio.h>
@@ -1245,3 +1247,5 @@ panel_plugin_external_get_pid (PanelPluginExternal *external)
   panel_return_val_if_fail (PANEL_IS_PLUGIN_EXTERNAL (external), 0);
   return external->priv->pid;
 }
+
+#endif

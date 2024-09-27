@@ -26,7 +26,7 @@
 #endif
 
 #include <gdk/gdk.h>
-#include <gdk/gdkx.h>
+//#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
 #include <libxfce4util/libxfce4util.h>
@@ -38,7 +38,7 @@
 
 #include "systray.h"
 #include "systray-box.h"
-#include "systray-socket.h"
+//#include "systray-socket.h"
 #include "systray-manager.h"
 
 #include "sn-backend.h"
@@ -50,6 +50,7 @@
 
 #define BUTTON_SIZE   (16)
 
+#if 0
 
 static void                  sn_plugin_construct                     (XfcePanelPlugin         *panel_plugin);
 
@@ -374,3 +375,4 @@ sn_plugin_construct (XfcePanelPlugin *panel_plugin)
                     G_CALLBACK(snbox_has_hidden_cb), plugin);
   xfce_panel_plugin_add_action_widget(XFCE_PANEL_PLUGIN(plugin), plugin->button);
 }
+#endif

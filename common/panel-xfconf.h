@@ -19,7 +19,7 @@
 #ifndef __PANEL_XFCONF_H__
 #define __PANEL_XFCONF_H__
 
-#include <xfconf/xfconf.h>
+#include "../xfconf_wrapper.h"
 
 
 

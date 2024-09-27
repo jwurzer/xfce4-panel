@@ -43,10 +43,10 @@
 #include <libxfce4panel/libxfce4panel.h>
 #include <libxfce4panel/xfce-panel-plugin-provider.h>
 
-#include <wrapper/wrapper-plug.h>
+//#include <wrapper/wrapper-plug.h>
 #include <wrapper/wrapper-module.h>
 
-
+#if 0
 
 static GQuark   plug_quark = 0;
 static gint     retval = PLUGIN_EXIT_FAILURE;
@@ -295,11 +295,12 @@ wrapper_gproxy_name_owner_changed (GDBusProxy *proxy,
    g_free (name_owner);
 }
 
-
+#endif
 
 gint
 main (gint argc, gchar **argv)
 {
+#if 0
 #if defined(HAVE_SYS_PRCTL_H) && defined(PR_SET_NAME)
   gchar                    process_name[16];
 #endif
@@ -471,4 +472,6 @@ leave:
     }
 
   return retval;
+#endif
+  return 0;
 }

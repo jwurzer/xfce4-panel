@@ -32,7 +32,7 @@
 #include <X11/Xatom.h>
 
 #include <gdk/gdk.h>
-#include <gdk/gdkx.h>
+//#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
 #include <common/panel-private.h>
@@ -54,7 +54,7 @@
 #define XFCE_SYSTRAY_MANAGER_ORIENTATION_HORIZONTAL 0
 #define XFCE_SYSTRAY_MANAGER_ORIENTATION_VERTICAL   1
 
-
+#if 0
 
 static void            systray_manager_finalize                           (GObject             *object);
 static void            systray_manager_remove_socket                      (gpointer             key,
@@ -244,17 +244,20 @@ systray_manager_init (SystrayManager *manager)
   manager->success.blue = 0.0;
 }
 
-
+#endif
 
 GQuark
 systray_manager_error_quark (void)
 {
+#if 0
   static GQuark q = 0;
 
   if (q == 0)
     q = g_quark_from_static_string ("systray-manager-error-quark");
 
   return q;
+#endif
+  return 0;
 }
 
 
@@ -262,6 +265,7 @@ systray_manager_error_quark (void)
 static void
 systray_manager_finalize (GObject *object)
 {
+#if 0
   SystrayManager *manager = XFCE_SYSTRAY_MANAGER (object);
 
   panel_return_if_fail (manager->invisible == NULL);
@@ -280,6 +284,7 @@ systray_manager_finalize (GObject *object)
     }
 
   G_OBJECT_CLASS (systray_manager_parent_class)->finalize (object);
+#endif
 }
 
 
@@ -287,7 +292,8 @@ systray_manager_finalize (GObject *object)
 SystrayManager *
 systray_manager_new (void)
 {
-  return g_object_new (XFCE_TYPE_SYSTRAY_MANAGER, NULL);
+  //return g_object_new (XFCE_TYPE_SYSTRAY_MANAGER, NULL);
+  return NULL;
 }
 
 
@@ -327,6 +333,7 @@ systray_manager_register (SystrayManager  *manager,
                           GdkScreen       *screen,
                           GError         **error)
 {
+#if 0
   GdkDisplay          *display;
   gchar               *selection_name;
   gboolean             succeed;
@@ -434,6 +441,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
   return succeed;
+#endif
+  return FALSE;
 }
 
 
@@ -443,6 +452,7 @@ systray_manager_remove_socket (gpointer key,
                                gpointer value,
                                gpointer user_data)
 {
+#if 0
   SystrayManager *manager = XFCE_SYSTRAY_MANAGER (user_data);
   GtkSocket      *socket = GTK_SOCKET (value);
 
@@ -451,6 +461,7 @@ systray_manager_remove_socket (gpointer key,
 
   /* properly undock from the tray */
   g_signal_emit (manager, systray_manager_signals[ICON_REMOVED], 0, socket);
+#endif
 }
 
 
@@ -458,6 +469,7 @@ systray_manager_remove_socket (gpointer key,
 void
 systray_manager_unregister (SystrayManager *manager)
 {
+#if 0
   GdkDisplay *display;
   GtkWidget  *invisible = manager->invisible;
   GdkWindow  *owner;
@@ -499,10 +511,12 @@ systray_manager_unregister (SystrayManager *manager)
   g_object_unref (G_OBJECT (invisible));
 
   panel_debug (PANEL_DEBUG_SYSTRAY, "unregistered manager");
+#endif
 }
 
 
 
+#if 0
 static GdkFilterReturn
 systray_manager_window_filter (GdkXEvent *xev,
                                GdkEvent  *event,
@@ -529,7 +543,6 @@ systray_manager_window_filter (GdkXEvent *xev,
       /* unregister the manager */
       systray_manager_unregister (manager);
     }
-
   return GDK_FILTER_CONTINUE;
 }
 
@@ -818,7 +831,7 @@ systray_manager_set_visual (SystrayManager *manager)
                    (guchar *) &data, 1);
 }
 
-
+#endif
 
 void
 systray_manager_set_colors (SystrayManager *manager,
@@ -827,6 +840,7 @@ systray_manager_set_colors (SystrayManager *manager,
                             GdkColor       *warning,
                             GdkColor       *success)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_SYSTRAY_MANAGER (manager));
 
   manager->fg = *fg;
@@ -835,10 +849,11 @@ systray_manager_set_colors (SystrayManager *manager,
   manager->success = *success;
 
   systray_manager_set_colors_property (manager);
+#endif
 }
 
 
-
+#if 0
 static void
 systray_manager_set_colors_property (SystrayManager *manager)
 {
@@ -874,13 +889,14 @@ systray_manager_set_colors_property (SystrayManager *manager)
                    PropModeReplace,
                    (guchar *) &data, 12);
 }
-
+#endif
 
 
 void
 systray_manager_set_orientation (SystrayManager *manager,
                                  GtkOrientation  orientation)
 {
+#if 0
   GdkDisplay *display;
   Atom        orientation_atom;
   gulong      data[1];
@@ -911,10 +927,11 @@ systray_manager_set_orientation (SystrayManager *manager,
                    XA_CARDINAL, 32,
                    PropModeReplace,
                    (guchar *) &data, 1);
+#endif
 }
 
 
-
+#if 0
 /**
  * tray messages
  **/
@@ -954,3 +971,4 @@ systray_manager_message_remove_from_list (SystrayManager      *manager,
         }
     }
 }
+#endif

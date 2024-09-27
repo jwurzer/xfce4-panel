@@ -131,7 +131,9 @@ panel_dialogs_choose_panel_combo_changed (GtkComboBox      *combo,
 {
   gint panel_id;
 
-  panel_return_if_fail (PANEL_IS_APPLICATION (application));
+  //panel_return_if_fail (PANEL_IS_APPLICATION (application));
+  g_warning("TODO: panel_dialogs_choose_panel_combo_changed ()");
+  g_warning("TODO: panel_return_if_fail (PANEL_IS_APPLICATION (application));");
   panel_return_if_fail (GTK_IS_COMBO_BOX (combo));
 
   panel_id = panel_dialogs_choose_panel_combo_get_id (combo);
@@ -155,7 +157,9 @@ panel_dialogs_choose_panel (PanelApplication *application)
   gint             i;
   gint             panel_id;
 
-  panel_return_val_if_fail (PANEL_IS_APPLICATION (application), -1);
+  //panel_return_val_if_fail (PANEL_IS_APPLICATION (application), -1);
+  g_warning("TODO: panel_dialogs_choose_panel (PanelApplication *application)");
+  g_warning("TODO: panel_return_val_if_fail (PANEL_IS_APPLICATION (application), -1);");
 
   /* setup the dialog */
   dialog = gtk_dialog_new_with_buttons (_("Add New Item"), NULL,

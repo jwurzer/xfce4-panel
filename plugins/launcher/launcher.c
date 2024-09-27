@@ -29,7 +29,7 @@
 #include <libxfce4ui/libxfce4ui.h>
 #include <garcon/garcon.h>
 #include <garcon-gtk/garcon-gtk.h>
-#include <xfconf/xfconf.h>
+#include "xfconf_wrapper.h"
 
 #include <libxfce4panel/libxfce4panel.h>
 #include <common/panel-private.h>

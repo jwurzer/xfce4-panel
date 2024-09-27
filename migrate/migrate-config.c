@@ -28,7 +28,7 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <xfconf/xfconf.h>
+#include "xfconf_wrapper.h"
 #include <migrate/migrate-config.h>
 
 

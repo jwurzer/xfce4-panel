@@ -24,10 +24,13 @@
 #include <string.h>
 #endif
 
-#include <wrapper/wrapper-plug.h>
+#include <glib.h>
+//#include <wrapper/wrapper-plug.h>
 #include <common/panel-private.h>
 
+typedef struct _WrapperPlug WrapperPlug;
 
+#if 0
 
 static void     wrapper_plug_finalize         (GObject        *object);
 static gboolean wrapper_plug_draw             (GtkWidget      *widget,
@@ -222,11 +225,13 @@ wrapper_plug_background_reset (WrapperPlug *plug)
   plug->background_image = NULL;
 }
 
+#endif
 
-
+#if 0 // removed from header
 WrapperPlug *
 wrapper_plug_new (Window socket_id)
 {
+#if 0
   WrapperPlug *plug;
 
   /* create new object */
@@ -236,8 +241,10 @@ wrapper_plug_new (Window socket_id)
   gtk_plug_construct (GTK_PLUG (plug), socket_id);
 
   return plug;
+#endif
+  return NULL;
 }
-
+#endif
 
 
 void
@@ -245,10 +252,10 @@ wrapper_plug_set_opacity (WrapperPlug *plug,
                           gdouble      opacity)
 {
 
-  panel_return_if_fail (WRAPPER_IS_PLUG (plug));
+  //panel_return_if_fail (WRAPPER_IS_PLUG (plug));
 
-  if (gtk_widget_get_opacity (GTK_WIDGET (plug)) != opacity)
-    gtk_widget_set_opacity (GTK_WIDGET (plug), opacity);
+  //if (gtk_widget_get_opacity (GTK_WIDGET (plug)) != opacity)
+  //  gtk_widget_set_opacity (GTK_WIDGET (plug), opacity);
 }
 
 
@@ -257,6 +264,7 @@ void
 wrapper_plug_set_background_color (WrapperPlug *plug,
                                    const gchar *color_string)
 {
+#if 0
   GdkRGBA                 color;
 
   panel_return_if_fail (WRAPPER_IS_PLUG (plug));
@@ -268,6 +276,7 @@ wrapper_plug_set_background_color (WrapperPlug *plug,
     plug->background_rgba = gdk_rgba_copy (&color);
 
   gtk_widget_queue_draw (GTK_WIDGET (plug));
+#endif
 }
 
 
@@ -276,11 +285,11 @@ void
 wrapper_plug_set_background_image (WrapperPlug *plug,
                                    const gchar *image)
 {
-  panel_return_if_fail (WRAPPER_IS_PLUG (plug));
+  //panel_return_if_fail (WRAPPER_IS_PLUG (plug));
 
-  wrapper_plug_background_reset (plug);
+  //wrapper_plug_background_reset (plug);
 
-  plug->background_image = g_strdup (image);
+  //plug->background_image = g_strdup (image);
 
-  gtk_widget_queue_draw (GTK_WIDGET (plug));
+  //gtk_widget_queue_draw (GTK_WIDGET (plug));
 }

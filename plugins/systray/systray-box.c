@@ -33,7 +33,7 @@
 #include <common/panel-debug.h>
 
 #include "systray-box.h"
-#include "systray-socket.h"
+//#include "systray-socket.h"
 #include "sn-config.h"
 
 #define SPACING    (2)
@@ -43,7 +43,7 @@
 #define REQUISITION_IS_INVISIBLE(child_req) ((child_req).width <= 1 && (child_req).height <= 1)
 
 
-
+#if 0
 static void     systray_box_get_property          (GObject         *object,
                                                    guint            prop_id,
                                                    GValue          *value,
@@ -761,13 +761,15 @@ systray_box_compare_function (gconstpointer a,
   /* sort unordered icons by name */
   return g_strcmp0 (name_a, name_b);
 }
+#endif
 
 
 
 GtkWidget *
 systray_box_new (void)
 {
-  return g_object_new (XFCE_TYPE_SYSTRAY_BOX, NULL);
+  //return g_object_new (XFCE_TYPE_SYSTRAY_BOX, NULL);
+  return NULL;
 }
 
 
@@ -776,6 +778,7 @@ void
 systray_box_set_orientation (SystrayBox     *box,
                              GtkOrientation  orientation)
 {
+#if 0
   gboolean horizontal;
 
   panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
@@ -788,6 +791,7 @@ systray_box_set_orientation (SystrayBox     *box,
       if (box->children != NULL)
         gtk_widget_queue_resize (GTK_WIDGET (box));
     }
+#endif
 }
 
 
@@ -799,6 +803,7 @@ systray_box_set_dimensions (SystrayBox *box,
                             gint        row_size,
                             gint        padding)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
 
   if (G_UNLIKELY (icon_size == box->size_max && n_rows == box->nrows && row_size == box->row_size && padding == box->row_padding))
@@ -813,6 +818,7 @@ systray_box_set_dimensions (SystrayBox *box,
 
   if (box->children != NULL)
     gtk_widget_queue_resize (GTK_WIDGET (box));
+#endif
 }
 
 
@@ -821,6 +827,7 @@ void
 systray_box_set_size_alloc (SystrayBox *box,
                             gint        size_alloc)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
 
   if (G_LIKELY (size_alloc != box->size_alloc))
@@ -831,6 +838,7 @@ systray_box_set_size_alloc (SystrayBox *box,
       if (box->children != NULL)
         gtk_widget_queue_resize (GTK_WIDGET (box));
     }
+#endif
 }
 
 
@@ -839,6 +847,7 @@ void
 systray_box_set_show_hidden (SystrayBox *box,
                              gboolean    show_hidden)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
 
   if (box->show_hidden != show_hidden)
@@ -848,6 +857,7 @@ systray_box_set_show_hidden (SystrayBox *box,
       if (box->children != NULL)
         gtk_widget_queue_resize (GTK_WIDGET (box));
     }
+#endif
 }
 
 
@@ -855,9 +865,10 @@ systray_box_set_show_hidden (SystrayBox *box,
 gboolean
 systray_box_get_show_hidden (SystrayBox *box)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_BOX (box), FALSE);
+  //panel_return_val_if_fail (XFCE_IS_SYSTRAY_BOX (box), FALSE);
 
-  return box->show_hidden;
+  //return box->show_hidden;
+  return FALSE;
 }
 
 
@@ -866,6 +877,7 @@ void
 systray_box_set_squared (SystrayBox *box,
                          gboolean    square_icons)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_SYSTRAY_BOX (box));
 
   if (box->square_icons != square_icons)
@@ -875,6 +887,7 @@ systray_box_set_squared (SystrayBox *box,
       if (box->children != NULL)
         gtk_widget_queue_resize (GTK_WIDGET (box));
     }
+#endif
 }
 
 
@@ -882,9 +895,10 @@ systray_box_set_squared (SystrayBox *box,
 gboolean
 systray_box_get_squared (SystrayBox *box)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_BOX (box), FALSE);
+  //panel_return_val_if_fail (XFCE_IS_SYSTRAY_BOX (box), FALSE);
 
-  return box->square_icons;
+  //return box->square_icons;
+  return FALSE;
 }
 
 
@@ -893,6 +907,7 @@ void
 systray_box_update (SystrayBox *box,
                     GSList     *names_ordered)
 {
+#if 0
   GSList *li;
   gint    i;
 
@@ -909,6 +924,7 @@ systray_box_update (SystrayBox *box,
 
   /* update the box, so we update the has-hidden property */
   gtk_widget_queue_resize (GTK_WIDGET (box));
+#endif
 }
 
 
@@ -916,8 +932,9 @@ systray_box_update (SystrayBox *box,
 gboolean
 systray_box_has_hidden_items (SystrayBox *box)
 {
-  g_return_val_if_fail (XFCE_IS_SYSTRAY_BOX (box), FALSE);
-  return box->n_hidden_children > 0;
+  //g_return_val_if_fail (XFCE_IS_SYSTRAY_BOX (box), FALSE);
+  //return box->n_hidden_children > 0;
+  return FALSE;
 }
 
 
@@ -925,6 +942,8 @@ void
 systray_box_set_single_row (SystrayBox *box,
                             gboolean    single_row)
 {
+#if 0
   box->single_row = single_row;
   gtk_widget_queue_resize (GTK_WIDGET (box));
+#endif
 }

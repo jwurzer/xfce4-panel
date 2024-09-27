@@ -20,7 +20,7 @@
 #define __PANEL_WINDOW_H__
 
 #include <gtk/gtk.h>
-#include <xfconf/xfconf.h>
+#include "../xfconf_wrapper.h"
 
 G_BEGIN_DECLS
 

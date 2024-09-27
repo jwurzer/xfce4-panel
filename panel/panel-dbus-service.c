@@ -195,7 +195,8 @@ panel_dbus_service_display_preferences_dialog (XfcePanelExportedService *skeleto
   panel_return_val_if_fail (PANEL_IS_DBUS_SERVICE (service), FALSE);
 
   /* show the preferences dialog */
-  panel_preferences_dialog_show_from_id (active, socket_id);
+  //panel_preferences_dialog_show_from_id (active, socket_id);
+  g_warning("TODO: call panel_preferences_dialog_show_from_id (active, socket_id);");
 
   xfce_panel_exported_service_complete_display_preferences_dialog(skeleton, invocation);
 

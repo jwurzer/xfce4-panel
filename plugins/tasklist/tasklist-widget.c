@@ -29,7 +29,7 @@
 
 #include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
-#include <libwnck/libwnck.h>
+//#include <libwnck/libwnck.h>
 #include <libxfce4panel/libxfce4panel.h>
 #include <common/panel-private.h>
 #include <common/panel-debug.h>
@@ -74,6 +74,7 @@
 #define xfce_tasklist_filter_monitors(tasklist) (!(tasklist)->all_monitors && (tasklist)->n_monitors > 1)
 
 
+#if 0
 
 enum
 {
@@ -4528,12 +4529,13 @@ xfce_tasklist_update_orientation (XfceTasklist *tasklist)
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
 
-
+#endif
 
 void
 xfce_tasklist_set_nrows (XfceTasklist *tasklist,
                          gint          nrows)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_TASKLIST (tasklist));
   panel_return_if_fail (nrows >= 1);
 
@@ -4542,6 +4544,7 @@ xfce_tasklist_set_nrows (XfceTasklist *tasklist,
       tasklist->nrows = nrows;
       gtk_widget_queue_resize (GTK_WIDGET (tasklist));
     }
+#endif
 }
 
 
@@ -4550,6 +4553,7 @@ void
 xfce_tasklist_set_mode (XfceTasklist        *tasklist,
                         XfcePanelPluginMode  mode)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_TASKLIST (tasklist));
 
   if (tasklist->mode != mode)
@@ -4557,6 +4561,7 @@ xfce_tasklist_set_mode (XfceTasklist        *tasklist,
       tasklist->mode = mode;
       xfce_tasklist_update_orientation (tasklist);
     }
+#endif
 }
 
 
@@ -4565,6 +4570,7 @@ void
 xfce_tasklist_set_size (XfceTasklist *tasklist,
                         gint          size)
 {
+#if 0
   panel_return_if_fail (XFCE_IS_TASKLIST (tasklist));
 
   if (tasklist->size != size)
@@ -4572,6 +4578,7 @@ xfce_tasklist_set_size (XfceTasklist *tasklist,
       tasklist->size = size;
       gtk_widget_queue_resize (GTK_WIDGET (tasklist));
     }
+#endif
 }
 
 
@@ -4579,9 +4586,11 @@ xfce_tasklist_set_size (XfceTasklist *tasklist,
 void
 xfce_tasklist_update_monitor_geometry (XfceTasklist *tasklist)
 {
+#if 0
   if (tasklist->update_monitor_geometry_id == 0)
     {
       tasklist->update_monitor_geometry_id = gdk_threads_add_idle_full (G_PRIORITY_LOW, xfce_tasklist_update_monitor_geometry_idle,
                                                                        tasklist, xfce_tasklist_update_monitor_geometry_idle_destroy);
     }
+#endif
 }

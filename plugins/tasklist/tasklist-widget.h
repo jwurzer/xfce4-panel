@@ -29,7 +29,8 @@ typedef enum   _XfceTasklistGrouping  XfceTasklistGrouping;
 typedef enum   _XfceTasklistSortOrder XfceTasklistSortOrder;
 typedef enum   _XfceTasklistMClick    XfceTasklistMClick;
 
-#define XFCE_TYPE_TASKLIST            (xfce_tasklist_get_type ())
+//#define XFCE_TYPE_TASKLIST            (xfce_tasklist_get_type ())
+#define XFCE_TYPE_TASKLIST            (0)
 #define XFCE_TASKLIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), XFCE_TYPE_TASKLIST, XfceTasklist))
 #define XFCE_TASKLIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), XFCE_TYPE_TASKLIST, XfceTasklistClass))
 #define XFCE_IS_TASKLIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XFCE_TYPE_TASKLIST))

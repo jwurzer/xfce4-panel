@@ -22,7 +22,7 @@
 #endif
 
 #include <gdk/gdk.h>
-#include <gdk/gdkx.h>
+//#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
 #include <libxfce4util/libxfce4util.h>
@@ -34,12 +34,12 @@
 
 #include "systray.h"
 #include "systray-box.h"
-#include "systray-socket.h"
+//#include "systray-socket.h"
 #include "systray-manager.h"
 
 #define BUTTON_SIZE   (16)
 
-
+#if 0
 static void     systray_plugin_names_update                 (SnPlugin              *plugin);
 static gboolean systray_plugin_names_get_hidden             (SnPlugin              *plugin,
                                                              const gchar           *name);
@@ -414,3 +414,4 @@ systray_plugin_lost_selection (SystrayManager *manager,
                     "of a notification area. This area will be unused.");
   xfce_dialog_show_error (NULL, &error, _("The notification area lost selection"));
 }
+#endif

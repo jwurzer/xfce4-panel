@@ -25,7 +25,7 @@
 #endif
 
 #include <glib/gstdio.h>
-#include <xfconf/xfconf.h>
+#include "../xfconf_wrapper.h"
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 
@@ -50,14 +50,14 @@
 #include <panel/panel-preferences-dialog.h>
 #include <panel/panel-item-dialog.h>
 #include <panel/panel-dialogs.h>
-#include <panel/panel-plugin-external.h>
+//#include <panel/panel-plugin-external.h>
 
 #define AUTOSAVE_INTERVAL   (10 * 60)
 #define MIGRATE_BIN         HELPERDIR G_DIR_SEPARATOR_S "migrate"
 #define PANELS_PROPERTY_BASE "/panels"
 
 
-
+#if 0
 static void      panel_application_finalize           (GObject                *object);
 static gboolean  panel_application_autosave_timer     (gpointer                user_data);
 static void      panel_application_plugin_move        (GtkWidget              *item,
@@ -94,7 +94,7 @@ static void      panel_application_drag_leave         (GtkWidget              *w
                                                        GdkDragContext         *context,
                                                        guint                   drag_time,
                                                        PanelApplication       *application);
-
+#endif
 
 
 enum
@@ -103,6 +103,7 @@ enum
   PROP_ITEMS_CHANGED
 };
 
+#if 0
 struct _PanelApplicationClass
 {
   GObjectClass __parent__;
@@ -151,6 +152,7 @@ typedef struct
 }
 WaitForWM;
 #endif
+#endif
 
 enum
 {
@@ -176,10 +178,10 @@ static const GtkTargetEntry drop_targets[] =
 
 
 
-G_DEFINE_TYPE (PanelApplication, panel_application, G_TYPE_OBJECT)
+//G_DEFINE_TYPE (PanelApplication, panel_application, G_TYPE_OBJECT)
 
 
-
+#if 0
 static void
 panel_application_class_init (PanelApplicationClass *klass)
 {
@@ -1164,11 +1166,12 @@ panel_application_window_id_exists (PanelApplication *application,
   return FALSE;
 }
 
-
+#endif
 
 PanelApplication *
 panel_application_get (void)
 {
+#if 0
   static PanelApplication *application = NULL;
 
   if (G_LIKELY (application))
@@ -1182,6 +1185,9 @@ panel_application_get (void)
     }
 
   return application;
+#endif
+  g_warning("TODO: panel_application_get (void)");
+  return NULL;
 }
 
 
@@ -1190,6 +1196,7 @@ void
 panel_application_load (PanelApplication  *application,
                         gboolean           disable_wm_check)
 {
+#if 0
 #ifdef GDK_WINDOWING_X11
   WaitForWM  *wfwm;
   guint       i;
@@ -1231,6 +1238,8 @@ panel_application_load (PanelApplication  *application,
   /* directly launch */
   panel_application_load_real (application);
 #endif
+#endif
+  g_warning("TODO: panel_application_load ()");
 }
 
 
@@ -1239,6 +1248,7 @@ void
 panel_application_save (PanelApplication *application,
                         PanelSaveTypes    save_types)
 {
+#if 0
   GSList        *li;
   XfconfChannel *channel = application->xfconf;
   GValue        *value;
@@ -1278,6 +1288,8 @@ panel_application_save (PanelApplication *application,
         g_warning ("Failed to store the number of panels");
       xfconf_array_free (panels);
     }
+#endif
+  g_warning("TODO: panel_application_save ()");
 }
 
 
@@ -1287,6 +1299,7 @@ panel_application_save_window (PanelApplication *application,
                                PanelWindow      *window,
                                PanelSaveTypes    save_types)
 {
+#if 0
   GList                   *children, *lp;
   GtkWidget               *itembar;
   XfcePanelPluginProvider *provider;
@@ -1364,6 +1377,8 @@ panel_application_save_window (PanelApplication *application,
     }
 
   g_list_free (children);
+#endif
+  g_warning("TODO: panel_application_save_window ()");
 }
 
 
@@ -1372,6 +1387,7 @@ void
 panel_application_take_dialog (PanelApplication *application,
                                GtkWindow        *dialog)
 {
+#if 0
   panel_return_if_fail (PANEL_IS_APPLICATION (application));
   panel_return_if_fail (GTK_IS_WINDOW (dialog));
 
@@ -1383,6 +1399,8 @@ panel_application_take_dialog (PanelApplication *application,
   g_signal_connect (G_OBJECT (dialog), "destroy",
       G_CALLBACK (panel_application_dialog_destroyed), application);
   application->dialogs = g_slist_prepend (application->dialogs, dialog);
+#endif
+  g_warning("TODO: panel_application_take_dialog ()");
 }
 
 
@@ -1390,6 +1408,7 @@ panel_application_take_dialog (PanelApplication *application,
 void
 panel_application_destroy_dialogs (PanelApplication *application)
 {
+#if 0
   GSList *li, *lnext;
 
   panel_return_if_fail (PANEL_IS_APPLICATION (application));
@@ -1402,6 +1421,8 @@ panel_application_destroy_dialogs (PanelApplication *application)
     }
 
   panel_return_if_fail (application->dialogs == NULL);
+#endif
+  g_warning("TODO: panel_application_destroy_dialogs (PanelApplication *application)");
 }
 
 
@@ -1412,6 +1433,7 @@ panel_application_add_new_item (PanelApplication  *application,
                                 const gchar       *plugin_name,
                                 gchar            **arguments)
 {
+#if 0
   gint panel_id;
 
   panel_return_if_fail (PANEL_IS_APPLICATION (application));
@@ -1467,6 +1489,8 @@ panel_application_add_new_item (PanelApplication  *application,
       g_warning ("The plugin \"%s\" you want to add is not "
                  "known by the panel", plugin_name);
     }
+#endif
+  g_warning("TODO: panel_application_add_new_item ()");
 }
 
 
@@ -1477,6 +1501,7 @@ panel_application_new_window (PanelApplication *application,
                               gint              panel_id,
                               gboolean          new_window)
 {
+#if 0
   GtkWidget          *window;
   GtkWidget          *itembar;
   gchar              *property;
@@ -1563,6 +1588,9 @@ panel_application_new_window (PanelApplication *application,
     panel_application_save (application, SAVE_PANEL_IDS);
 
   return PANEL_WINDOW (window);
+#endif
+  g_warning("TODO: panel_application_new_window ()");
+  return NULL;
 }
 
 
@@ -1571,6 +1599,7 @@ void
 panel_application_remove_window (PanelApplication *application,
                                  PanelWindow      *window)
 {
+#if 0
   gchar     *property;
   GtkWidget *itembar;
   gint       panel_id;
@@ -1615,6 +1644,8 @@ panel_application_remove_window (PanelApplication *application,
   /* TODO, allow removing all windows and ask user what to do */
   if (application->windows == NULL)
     gtk_main_quit ();
+#endif
+  g_warning("TODO: panel_application_remove_window ()");
 }
 
 
@@ -1622,8 +1653,12 @@ panel_application_remove_window (PanelApplication *application,
 GSList *
 panel_application_get_windows (PanelApplication *application)
 {
+#if 0
   panel_return_val_if_fail (PANEL_IS_APPLICATION (application), NULL);
   return application->windows;
+#endif
+  g_warning("TODO: panel_application_get_windows (PanelApplication *application)");
+  return NULL;
 }
 
 
@@ -1632,6 +1667,7 @@ PanelWindow *
 panel_application_get_window (PanelApplication  *application,
                               gint               panel_id)
 {
+#if 0
   GSList *li;
 
   panel_return_val_if_fail (PANEL_IS_APPLICATION (application), NULL);
@@ -1641,6 +1677,9 @@ panel_application_get_window (PanelApplication  *application,
       return li->data;
 
   return NULL;
+#endif
+  g_warning("TODO: panel_application_get_window (PanelApplication  *application)");
+  return NULL;
 }
 
 
@@ -1649,6 +1688,7 @@ void
 panel_application_window_select (PanelApplication *application,
                                  PanelWindow      *window)
 {
+#if 0
   GSList *li;
 
   panel_return_if_fail (PANEL_IS_APPLICATION (application));
@@ -1656,6 +1696,8 @@ panel_application_window_select (PanelApplication *application,
   /* update state for all windows */
   for (li = application->windows; li != NULL; li = li->next)
     g_object_set (G_OBJECT (li->data), "active", window == li->data, NULL);
+#endif
+  g_warning("TODO: panel_application_window_select (PanelApplication *application)");
 }
 
 
@@ -1664,6 +1706,7 @@ void
 panel_application_windows_blocked (PanelApplication *application,
                                    gboolean          blocked)
 {
+#if 0
   GSList *li;
 
   panel_return_if_fail (PANEL_IS_APPLICATION (application));
@@ -1677,6 +1720,8 @@ panel_application_windows_blocked (PanelApplication *application,
       else
         panel_window_thaw_autohide (PANEL_WINDOW (li->data));
     }
+#endif
+  g_warning("TODO: panel_application_windows_blocked (PanelApplication *application)");
 }
 
 
@@ -1684,6 +1729,7 @@ panel_application_windows_blocked (PanelApplication *application,
 gboolean
 panel_application_get_locked (PanelApplication *application)
 {
+#if 0
   GSList *li;
 
   panel_return_val_if_fail (PANEL_IS_APPLICATION (application), TRUE);
@@ -1703,6 +1749,9 @@ panel_application_get_locked (PanelApplication *application)
   /* TODO we could extend this to a plugin basis (ie. panels are
    * locked but maybe not all the plugins) */
   return TRUE;
+#endif
+  g_warning("TODO: panel_application_get_locked (PanelApplication *application)");
+  return FALSE;
 }
 
 

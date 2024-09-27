@@ -36,11 +36,11 @@
 #include <X11/Xatom.h>
 #endif
 
-#include <libwnck/libwnck.h>
+//#include <libwnck/libwnck.h>
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <xfconf/xfconf.h>
+#include "../xfconf_wrapper.h"
 #include <common/panel-private.h>
 #include <common/panel-debug.h>
 #include <common/panel-utils.h>
@@ -52,7 +52,7 @@
 #include <panel/panel-preferences-dialog.h>
 #include <panel/panel-dialogs.h>
 #include <panel/panel-dbus-service.h>
-#include <panel/panel-plugin-external.h>
+//#include <panel/panel-plugin-external.h>
 #include <panel/panel-tic-tac-toe.h>
 
 
@@ -81,7 +81,7 @@ typedef enum _SnapPosition  SnapPosition;
 typedef enum _PluginProp    PluginProp;
 
 
-
+#if 0
 static void         panel_window_get_property               (GObject          *object,
                                                              guint             prop_id,
                                                              GValue           *value,
@@ -184,7 +184,7 @@ static void         panel_window_plugin_set_nrows                     (GtkWidget
                                                                        gpointer          user_data);
 static void         panel_window_plugin_set_screen_position           (GtkWidget        *widget,
                                                                        gpointer          user_data);
-
+#endif
 
 
 enum
@@ -293,6 +293,7 @@ enum
   N_STRUTS
 };
 
+#if 0
 struct _PanelWindowClass
 {
   PanelBaseWindowClass __parent__;
@@ -384,7 +385,10 @@ static GdkAtom net_wm_strut_partial_atom = 0;
 
 G_DEFINE_TYPE (XfcePanelWindow, panel_window, PANEL_TYPE_BASE_WINDOW)
 
+#endif
 
+
+#if 0
 
 static void
 panel_window_class_init (PanelWindowClass *klass)
@@ -3271,12 +3275,13 @@ panel_window_plugin_set_screen_position (GtkWidget *widget,
                                                   position);
 }
 
-
+#endif
 
 GtkWidget *
 panel_window_new (GdkScreen *screen,
                   gint       id)
 {
+#if 0
   if (screen == NULL)
     screen = gdk_screen_get_default ();
 
@@ -3291,6 +3296,9 @@ panel_window_new (GdkScreen *screen,
                        "role", "Panel",
                        "name", "XfcePanelWindow",
                        NULL);
+#endif
+  g_warning("TODO: panel_window_new ()");
+  return NULL;
 }
 
 
@@ -3298,9 +3306,13 @@ panel_window_new (GdkScreen *screen,
 gint
 panel_window_get_id (PanelWindow *window)
 {
+#if 0
   panel_return_val_if_fail (PANEL_IS_WINDOW (window), -1);
   panel_return_val_if_fail (window->id > -1, -1);
   return window->id;
+#endif
+  g_warning("TODO: panel_window_get_id ()");
+  return 0;
 }
 
 
@@ -3308,8 +3320,10 @@ panel_window_get_id (PanelWindow *window)
 gboolean
 panel_window_has_position (PanelWindow *window)
 {
-  panel_return_val_if_fail (PANEL_IS_WINDOW (window), FALSE);
-  return window->base_x != -1 && window->base_y != -1;
+  //panel_return_val_if_fail (PANEL_IS_WINDOW (window), FALSE);
+  //return window->base_x != -1 && window->base_y != -1;
+  g_warning("TODO: panel_window_has_position (PanelWindow *window)");
+  return FALSE;
 }
 
 
@@ -3319,6 +3333,7 @@ panel_window_set_povider_info (PanelWindow *window,
                                GtkWidget   *provider,
                                gboolean     moving_to_other_panel)
 {
+#if 0
   PanelBaseWindow *base_window = PANEL_BASE_WINDOW (window);
 
   panel_return_if_fail (PANEL_IS_WINDOW (window));
@@ -3357,6 +3372,8 @@ panel_window_set_povider_info (PanelWindow *window,
   panel_window_plugin_set_icon_size (provider, window);
   panel_window_plugin_set_dark_mode (provider, window);
   panel_window_plugin_set_nrows (provider, window);
+#endif
+  g_warning("TODO: panel_window_set_povider_info ()");
 }
 
 
@@ -3364,6 +3381,7 @@ panel_window_set_povider_info (PanelWindow *window,
 void
 panel_window_freeze_autohide (PanelWindow *window)
 {
+#if 0
   panel_return_if_fail (PANEL_IS_WINDOW (window));
   panel_return_if_fail (window->autohide_block >= 0);
 
@@ -3373,6 +3391,8 @@ panel_window_freeze_autohide (PanelWindow *window)
   if (window->autohide_block == 1
       && window->autohide_state != AUTOHIDE_DISABLED)
     panel_window_autohide_queue (window, AUTOHIDE_BLOCKED);
+#endif
+  g_warning("TODO: panel_window_freeze_autohide (PanelWindow *window)");
 }
 
 
@@ -3380,6 +3400,7 @@ panel_window_freeze_autohide (PanelWindow *window)
 void
 panel_window_thaw_autohide (PanelWindow *window)
 {
+#if 0
   panel_return_if_fail (PANEL_IS_WINDOW (window));
   panel_return_if_fail (window->autohide_block > 0);
 
@@ -3395,6 +3416,8 @@ panel_window_thaw_autohide (PanelWindow *window)
     else
       panel_window_autohide_queue (window, AUTOHIDE_POPDOWN);
   }
+#endif
+  g_warning("TODO: panel_window_thaw_autohide (PanelWindow *window)");
 }
 
 
@@ -3403,9 +3426,12 @@ void
 panel_window_set_locked (PanelWindow *window,
                          gboolean     locked)
 {
+#if 0
   panel_return_if_fail (PANEL_IS_WINDOW (window));
 
   window->locked = locked;
+#endif
+  g_warning("TODO: panel_window_set_locked ()");
 }
 
 
@@ -3413,9 +3439,13 @@ panel_window_set_locked (PanelWindow *window,
 gboolean
 panel_window_get_locked (PanelWindow *window)
 {
+#if 0
   panel_return_val_if_fail (PANEL_IS_WINDOW (window), TRUE);
 
   return window->locked;
+#endif
+  g_warning("TODO: panel_window_get_locked (PanelWindow *window)");
+  return FALSE;
 }
 
 
@@ -3423,6 +3453,7 @@ panel_window_get_locked (PanelWindow *window)
 void
 panel_window_focus (PanelWindow *window)
 {
+#if 0
 #ifdef GDK_WINDOWING_X11
   XClientMessageEvent event;
 
@@ -3451,6 +3482,8 @@ panel_window_focus (PanelWindow *window)
   /* our best guess on non-x11 clients */
   gtk_window_present (GTK_WINDOW (window));
 #endif
+#endif
+  g_warning("TODO: panel_window_focus (PanelWindow *window)");
 }
 
 
@@ -3463,7 +3496,9 @@ panel_window_migrate_autohide_property (PanelWindow   *window,
   gboolean autohide;
   gchar   *old_property;
 
-  panel_return_if_fail (PANEL_IS_WINDOW (window));
+  //panel_return_if_fail (PANEL_IS_WINDOW (window));
+  g_warning("TODO: panel_window_migrate_autohide_property ()");
+  g_warning("TODO: panel_return_if_fail (PANEL_IS_WINDOW (window));");
   panel_return_if_fail (XFCONF_IS_CHANNEL (xfconf));
   panel_return_if_fail (property_base != NULL && *property_base != '\0');
 

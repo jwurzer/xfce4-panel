@@ -30,7 +30,11 @@
 #include <common/panel-private.h>
 
 #ifdef HAVE_GIO_UNIX
+#ifdef HAVE_X11
 #include <gio/gdesktopappinfo.h>
+#else
+#include "gdesktopappinfo_wrapper.h"
+#endif
 #endif
 
 #include "directorymenu.h"

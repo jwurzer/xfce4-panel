@@ -31,7 +31,7 @@
 #include <X11/Xatom.h>
 
 #include <gdk/gdk.h>
-#include <gdk/gdkx.h>
+//#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
 #include <libxfce4panel/libxfce4panel.h>
@@ -42,7 +42,7 @@
 #include "systray-socket.h"
 
 
-
+#if 0
 struct _SystraySocketClass
 {
   GtkSocketClass __parent__;
@@ -242,12 +242,13 @@ systray_socket_style_set (GtkWidget *widget,
 {
 }
 
-
+#endif
 
 GtkWidget *
 systray_socket_new (GdkScreen       *screen,
                     Window           window)
 {
+#if 0
   SystraySocket     *socket;
   GdkDisplay        *display;
   XWindowAttributes  attr;
@@ -292,6 +293,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     socket->is_composited = TRUE;
 
   return GTK_WIDGET (socket);
+#endif
+  return NULL;
 }
 
 
@@ -299,6 +302,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 void
 systray_socket_force_redraw (SystraySocket *socket)
 {
+#if 0
   GtkWidget     *widget = GTK_WIDGET (socket);
   XEvent         xev;
   GdkDisplay    *display;
@@ -331,6 +335,7 @@ systray_socket_force_redraw (SystraySocket *socket)
       XSync (GDK_DISPLAY_XDISPLAY (display), False);
       gdk_x11_display_error_trap_pop_ignored (display);
     }
+#endif
 }
 
 
@@ -338,13 +343,14 @@ systray_socket_force_redraw (SystraySocket *socket)
 gboolean
 systray_socket_is_composited (SystraySocket *socket)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), FALSE);
+  //panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), FALSE);
 
-  return socket->is_composited;
+  //return socket->is_composited;
+  return FALSE;
 }
 
 
-
+#if 0
 static gchar *
 systray_socket_get_name_prop (SystraySocket *socket,
                               const gchar   *prop_name,
@@ -397,12 +403,13 @@ systray_socket_get_name_prop (SystraySocket *socket,
 
   return name;
 }
-
+#endif
 
 
 const gchar *
 systray_socket_get_name (SystraySocket *socket)
 {
+#if 0
   panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), NULL);
 
   if (G_LIKELY (socket->name != NULL))
@@ -415,6 +422,8 @@ systray_socket_get_name (SystraySocket *socket)
     socket->name = systray_socket_get_name_prop (socket, "WM_NAME", "STRING");
 
   return socket->name;
+#endif
+  return "TODO";
 }
 
 
@@ -422,9 +431,10 @@ systray_socket_get_name (SystraySocket *socket)
 Window *
 systray_socket_get_window (SystraySocket *socket)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), NULL);
+  //panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), NULL);
 
-  return &socket->window;
+  //return &socket->window;
+  return NULL;
 }
 
 
@@ -432,9 +442,10 @@ systray_socket_get_window (SystraySocket *socket)
 gboolean
 systray_socket_get_hidden (SystraySocket *socket)
 {
-  panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), FALSE);
+  //panel_return_val_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket), FALSE);
 
-  return socket->hidden;
+  //return socket->hidden;
+  return FALSE;
 }
 
 
@@ -443,7 +454,7 @@ void
 systray_socket_set_hidden (SystraySocket *socket,
                            gboolean       hidden)
 {
-  panel_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket));
+  //panel_return_if_fail (XFCE_IS_SYSTRAY_SOCKET (socket));
 
-  socket->hidden = hidden;
+  //socket->hidden = hidden;
 }

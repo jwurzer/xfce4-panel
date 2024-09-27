@@ -31,7 +31,7 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <xfconf/xfconf.h>
+#include "xfconf_wrapper.h"
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4panel/xfce-panel-macros.h>
